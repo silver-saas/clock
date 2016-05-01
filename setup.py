@@ -17,7 +17,7 @@ setup(
     description='Datetime setup useful for IoC usage. Inspired by Dart-quiver\'s Clock.',
     long_description=readme(),
     keywords='system clock datetime time',
-    url='http://github.com/horia141/silver',
+    url='http://github.com/silver-saas/clock',
     author='Horia Coman',
     author_email='horia141@gmail.com',
     license='All right reserved',
@@ -27,7 +27,6 @@ setup(
     install_requires=[
         'pytz==2015.7',
         # For testing
-        'coverage==4.1b1',
         'tabletest==1.1.0',
         ],
     test_suite='tests',
