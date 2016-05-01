@@ -1,0 +1,26 @@
+language: python
+
+python:
+- "2.7"
+
+# The secure env variables are: GEMFURY_KEY
+env:
+  global:
+    - secure: "cCXEG/LRCV4WHU05eIdozMIpISiPafAzeBdhVsPLM3LXf5DgM6EgYoI4+FP9afJwCjQUEP1tYqLjtGPE7alQBZ+09ytBk+pPlTQlIwa5YjeAPZX7YACHrcnzXD/J0Jy8hHMqNLdjLDTL5rDe5KFqK0Dzd4AW3XNZ9o54RthvXb5ReO+gCQqzZpvKl5XxH4W+BSMTNlpX6KlfpsJsch9mhoXNjeYaIboMpiMhg50+3YzmynRurIOIrze71v0gomrUQr6BIKBikT46Sgw4k9o355E+ROB4gkRufyE59VobfTE/nC8Avmqu+LNeKE8YCm8qO6YQ2YBnjbUc31u3zT96sDB+y4E6eGuZtU9lUZJp47t82f8m00fzkhXurTCosPc6q3wQlYfwcVbOdaIdL/DTptRWsy7erqe9TLpr4f7z4G5ArWSCwUTagyulP11IDBdWimUizCbAMVAw3afPJAowhpGwgqckih1yXJe5zd1g+QlISgKvArVczTDbOCR5DUy/UvV1bi2fLUI+SZs5CXGgc/egPunVf00bZFPX0CCsm6AdxcMLxteHn47/mahV7GZB2bQbv028ZtK4cNwC0MbWpOMqxXY4OeVNwvCEZeXdq1yN7HEwi65Bt9fg7e7p5XJS/Pq30tfvKFMxEhxSaI1DvM2ZZs5lssQKRTQr2dbG1mM="
+
+install: 
+  - pip install coveralls
+  - pip install coverage
+  - pip install -r requirements.txt
+
+script: coverage run --module unittest discover --verbose
+
+after_success:
+  - coveralls
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: bin/togemfury.sh
+
+sudo: false
